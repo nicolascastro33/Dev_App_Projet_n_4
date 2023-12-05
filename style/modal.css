@@ -527,3 +527,24 @@ footer {
   }
 }
 
+/* Modification CSS */
+
+.modal-body{
+align-items: center;
+display: flex;
+flex-direction: column;
+}
+
+#erreurMessage{
+  margin-top: 15px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.errorInput{
+  background-color: #ff0000;
+}
+
+.goodInput{
+  background-color: rgb(15, 241, 15);
+}
