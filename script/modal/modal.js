@@ -10,7 +10,6 @@ let listInputLocation = getInputLocation(allInputForm);
 let popup = document.querySelector(".modal-body");
 
 // Vieille données html
-const oldContent = parentDiv.innerHTML;    
 
 
 
