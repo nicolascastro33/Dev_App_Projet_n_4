@@ -1,4 +1,5 @@
 // DOM Elements
+const parentDiv = document.querySelector(".modal-body");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 // const formData = document.querySelectorAll(".formData");
@@ -7,6 +8,9 @@ const form = document.querySelector("form");
 const allInputForm = document.querySelectorAll(".formData input");
 let listInputLocation = getInputLocation(allInputForm);
 let popup = document.querySelector(".modal-body");
+
+// Vieille données html
+const oldContent = parentDiv.innerHTML;    
 
 
 

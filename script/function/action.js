@@ -25,7 +25,7 @@ function submitForm(event){
     try{
       event.preventDefault();
       let allInformation = {};
-          
+
       for(let i = 0; i < allInputForm.length; i++) {
        input = allInputForm[i];
        if(input.type === "text"){
@@ -40,13 +40,15 @@ function submitForm(event){
        }else if(input.name === "location"){
          allInformation.location = checkLocationTournament(listInputLocation, input);
        }else if(input.id === "checkbox1"){
-         allInformation.condition = checkConditionAgree(input);
+         allInformation.conditionAgree = checkConditionAgree(input);
        }else{
          allInformation.notificationAgree = checkNotificationAgree(input);
        }
-       console.log(allInformation);
      }
-  
+    console.log(allInformation);
+    //  eraseInput();
+     succeed();
+     
    } catch (error){
      console.log("Une erreur est survenue: " + error.message);
    }

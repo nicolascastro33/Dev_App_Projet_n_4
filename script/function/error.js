@@ -15,11 +15,16 @@ function errorInput(input){
 function showErrorMessage(message, id){
   let spanErreurMessage = document.getElementById(`errorMessage${id}`);
   if(!spanErreurMessage){
-    let inputError = document.querySelector(`[name="${id}"]`)
     spanErreurMessage = document.createElement("span");
     spanErreurMessage.id = `errorMessage${id}`;
-
-    inputError.after(spanErreurMessage);
+    spanErreurMessage.className = "errorMessage";
+     if(id === "location"){
+      const inputErrorLocation = document.querySelector(".formDataLocation");
+      inputErrorLocation.after(spanErreurMessage);
+    }else{
+      const inputError = document.querySelector(`[name="${id}"]`);
+      inputError.after(spanErreurMessage);
+    }
   }
   spanErreurMessage.innerText = message;
 }
