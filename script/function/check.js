@@ -79,11 +79,12 @@ function getInputLocation(allInputForm){
 function checkLocationTournament(locations, input){
     let checked = false;
     let locationPlace;
-    for(let i=0; i<locations.length; i++){
-     if(location[i].checked){
-      checked = true;
-      locationPlace = location[i].name
-     } 
+    for(let i=0; i < locations.length; i++){
+      let location = locations[i];
+      if(location.checked){
+        checked = true;
+        locationPlace = location.name
+      } 
     }
     if(!checked){
       let message = `Le lieu du tournoi n'est pas indiqué`
@@ -101,12 +102,12 @@ function checkLocationTournament(locations, input){
 function checkConditionAgree(input){
     if(!input.checked){
       let message = "Vous devez accepter les conditions pour continuer";
-      showErrorMessage(message, input.name)
+      showErrorMessage(message, input.id)
       errorInput(input);
       throw new Error(message);
     }else{
       fixErrorInput(input);
-      eraseErrorMessage(input.name);
+      eraseErrorMessage(input.id);
       return true
     }
 }

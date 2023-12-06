@@ -24,7 +24,8 @@ function updateForm(input){
 function submitForm(event){
     try{
       event.preventDefault();
-      let allInformation = {};    
+      let allInformation = {};
+          
       for(let i = 0; i < allInputForm.length; i++) {
        input = allInputForm[i];
        if(input.type === "text"){
