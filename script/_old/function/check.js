@@ -33,7 +33,6 @@ function checkName(name, nomOuPrénom, input){
   // Vérif date de naissance
   
   function checkBirthDate(birthDate, input){
-    console.log(birthDate)
     const regexBirthDate = new RegExp("^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$")
     if(!regexBirthDate.test(birthDate)){
       let message = `Votre date de naissance est invalide`

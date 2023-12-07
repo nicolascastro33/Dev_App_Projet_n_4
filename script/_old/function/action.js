@@ -46,7 +46,8 @@ function submitForm(event){
        }
      }
     console.log(allInformation);
-    //  eraseInput();
+     eraseInput();
+     closeModal();
      succeed();
      
    } catch (error){

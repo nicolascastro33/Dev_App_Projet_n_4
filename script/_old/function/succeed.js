@@ -1,8 +1,8 @@
 function succeed(){
      const newChildDiv = `
-        <div class="bground">
-            <div class="content">
-            <span class="close"></span>
+        <div class="bgroundSucceed">
+            <div class="content succeedContent">
+            <span class="close closeSucceed"></span>
             <div class="modal-body">
                 <div class="modalSucceed">
                     <h1>Merci pour votre inscription</h1>
@@ -16,22 +16,22 @@ function succeed(){
             </div>
         </div>
         `;
-    closeModal();
-   
-    parentDiv.innerHTML = newChildDiv;
+    // const heroSection = document.querySelector(".hero-section");
+    // heroSection.after(newChildDiv);
     
-    const inputSucceed = document.querySelector(".btn-succeed")
+    function closeSucceedModal(newChildDiv){
+        newChildDiv.remove();
+    }
+    const spanClose = document.querySelector(".closeSucceed");
+    const inputSucceed = document.querySelector(".btn-succeed");
     inputSucceed.addEventListener("click", () => {
-        closeModal();
-        content.classList.remove("succeedContent");
-        parentDiv.innerHTML = oldContent;
+        closeSucceedModal();
     })   
 
     spanClose.addEventListener("click", () => {
-        closeModal();
-        content.classList.remove("succeedContent");
-        parentDiv.innerHTML = oldContent;
+        closeSucceedModal();
     }) 
 
 }
+
 
