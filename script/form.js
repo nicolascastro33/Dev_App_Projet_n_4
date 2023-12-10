@@ -1,4 +1,9 @@
-const allInputForm = document.querySelectorAll('.formData input')
+import {eraseErrorMessage} from "./error/eraseError.js";
+import { closeModal } from "./modal/modal.js";
+import {initModalSucceed} from "./modal/modalSucceed.js"
+
+export const allInputForm = document.querySelectorAll('.formData input')
+const form = document.querySelector("form")
 
 export function clearForm () {
   for (let i = 0; i < allInputForm.length; i++) {
@@ -9,7 +14,39 @@ export function clearForm () {
   }
 }
 
-function eraseErrorMessage(id) {
-  const spanErreurMessage = document.getElementById(`errorMessage${id}`)
-  spanErreurMessage?.remove() // comme if (null) return; si null il ne fera pas le chainage
+export function updateForm(validateUpdateForm){
+  try{
+    for(let i=0; i < allInputForm.length; i++){
+      let input = allInputForm[i];
+      input.addEventListener("change", (event) => {
+        event.preventDefault();
+        validateUpdateForm(input);
+
+      })
+    } 
+  }catch(error){
+    console.log("Une erreur est survenue: " + error.message)   
+  }
 }
+
+export function submitForm(validateSubmitForm){
+  try{
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let allInformation = {};
+      for(let i=0; i <allInputForm.length; i++){
+        let input = allInputForm[i];
+        validateSubmitForm(input, allInformation);
+      }
+      console.log(allInformation);
+      clearForm();
+      closeModal();
+      initModalSucceed();
+    })
+  }catch(error){
+    console.log("Une erreur est survenue: " + error.message)
+  }
+  return true
+}
+
+

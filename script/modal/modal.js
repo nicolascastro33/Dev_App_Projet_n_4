@@ -1,5 +1,4 @@
 const modalWrapper = document.querySelector('.bground')
-const modalBody = document.querySelector('.modal-body')
 const openModalButton = document.querySelectorAll('.modal-btn')
 const closeModalButton = document.querySelector('.close')
 

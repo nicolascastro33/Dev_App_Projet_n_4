@@ -1,21 +1,16 @@
-import { initModal, onModalClose } from './modal.js';
-import { clearForm } from './form.js';
+import { initModal, onModalClose } from './modal/modal.js';
+import { clearForm, updateForm, submitForm } from './form.js';
+import { validateSubmitForm, validateUpdateForm } from './validate.js';
+import { initModalSucceed } from './modal/modalSucceed.js';
 
+//Ouverture et fermeture de la modale
 initModal();
 onModalClose(clearForm);
 
-// close modal event 
-// closeButton.addEventListener("click", () => {
-//     closeModal(allInputForm, modalbg)
-//   });
+// Modification du form
+updateForm(validateUpdateForm);
 
-// Modification form
-// for(let i=0; i < allInputForm.length; i++){
-//   let input = allInputForm[i];
-//   updateForm(input);
-// } 
+// Envoie et vérification du form
+submitForm(validateSubmitForm);
 
-// envoie form
-// form.addEventListener("submit", (event) => {
-//   submitForm(event);
-// })
+initModalSucceed();
