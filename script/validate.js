@@ -5,8 +5,8 @@ import { allInputForm } from './form.js';
 //Fonction qui va vérifier nos résultats pendant quand on change un input du form
 export function validateUpdateForm(input) {
   if (input.type === 'text') {
-    let nomOuPrénom = input.name === 'last' ? 'nom' : 'prénom';
-    validateName(input.value, nomOuPrénom, input);
+    let firstOrLast = input.name === 'last' ? 'nom' : 'prénom';
+    validateName(input.value, firstOrLast, input);
   } else if (input.type === 'email') {
     validateEmail(input.value, input);
   } else if (input.type === 'date') {
