@@ -6,6 +6,7 @@ export const allInputForm = document.querySelectorAll('.formData input');
 const form = document.querySelector('form');
 
 export function clearForm() {
+  // On efface toutes les données des inputs, leurs class css, ainsi que leurs message d'erreur
   for (let i = 0; i < allInputForm.length; i++) {
     const input = allInputForm[i];
     input.value = '';

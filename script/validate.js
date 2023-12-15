@@ -19,10 +19,10 @@ export function validateUpdateForm(input) {
 //Fonction qui va vérifier nos résultats quand on submit le form
 export function validateSubmitForm(input, allInformation) {
   if (input.type === 'text') {
-    let nomOuPrénom = input.name === 'last' ? 'nom' : 'prénom';
-    allInformation[`${nomOuPrénom}`] = validateName(
+    let firstOrLast = input.name === 'last' ? 'nom' : 'prénom';
+    allInformation[`${firstOrLast}`] = validateName(
       input.value,
-      nomOuPrénom,
+      firstOrLast,
       input
     );
   } else if (input.type === 'email') {
@@ -47,12 +47,15 @@ export function validateSubmitForm(input, allInformation) {
   return allInformation;
 }
 
-// Vérif nom et prénom
-function validateName(name, nomOuPrénom, input) {
-  const regexName = new RegExp('^[a-zA-Z-]+$');
+
+//Toutes les fonctions qui vont vérifier chaques input selon leur type 
+// et qui va renvoyer un message positif ou négatif
+
+function validateName(name, firstOrLast, input) {
+  const regexName = new RegExp('^^[a-zA-Zéè-]{2,}$');
   let exactName = name.trim();
   if (!regexName.test(exactName)) {
-    let message = `Le champ ${nomOuPrénom} est invalide`;
+    let message = `Le champ ${firstOrLast} est invalide`;
     insertErrorMessage(message, input.name);
     inserterrorInput(input);
     throw new Error(message);
@@ -63,7 +66,6 @@ function validateName(name, nomOuPrénom, input) {
   }
 }
 
-// Vérif email
 function validateEmail(email, input) {
   const regexEmail = new RegExp('[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+');
   if (!regexEmail.test(email)) {
@@ -78,7 +80,6 @@ function validateEmail(email, input) {
   }
 }
 
-// Vérif date de naissance
 
 function validateBirthDate(birthDate, input) {
   const regexBirthDate = new RegExp('^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$');
@@ -94,7 +95,6 @@ function validateBirthDate(birthDate, input) {
   }
 }
 
-// Vérif nombre de tournois
 function validateNumberOfTournement(numberOfTournement, input) {
   const regexNumberOfTournement = new RegExp('^[0-9]+$');
   if (!regexNumberOfTournement.test(numberOfTournement)) {
@@ -145,7 +145,6 @@ function validateLocationTournament(locations, input) {
   }
 }
 
-// Vérif si la condition a été accepté
 function validateConditionAgree(input) {
   if (!input.checked) {
     let message = 'Vous devez accepter les conditions pour continuer';
@@ -159,7 +158,6 @@ function validateConditionAgree(input) {
   }
 }
 
-// Vérif si la notification a été accepté
 function validateNotificationAgree(notification) {
   if (notification.checked) {
     return true;
