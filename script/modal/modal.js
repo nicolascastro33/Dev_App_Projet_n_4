@@ -1,28 +1,29 @@
-const modalWrapper = document.querySelector('.bground')
-const openModalButton = document.querySelectorAll('.modal-btn')
-const closeModalButton = document.querySelector('.close')
+const modalWrapper = document.querySelector('.bground');
+const openModalButton = document.querySelectorAll('.modal-btn');
+const closeModalButton = document.querySelector('.close');
 
-let onModalCloseCallback
+let onModalCloseCallback;
 
-export function onModalClose (callback) {
+export function onModalClose(callback) {
   // callback sera généralement une fonction passée en paramètre
-  onModalCloseCallback = callback
+  onModalCloseCallback = callback;
+}
+// Montre la modal
+export function launchModal() {
+  modalWrapper.style.display = 'block';
 }
 
-export function launchModal () {
-  modalWrapper.style.display = 'block'
-}
-
-export function closeModal () {
-    
+// Ferme la modal
+export function closeModal() {
   if (typeof onModalCloseCallback === 'function') {
-    onModalCloseCallback()
+    onModalCloseCallback();
   }
 
-  modalWrapper.style.display = 'none'
+  modalWrapper.style.display = 'none';
 }
 
-export function initModal () {
-  openModalButton.forEach(btn => btn.addEventListener('click', launchModal))
-  closeModalButton.addEventListener('click', closeModal)
+// Va insérer les fonctions d'ouverture et de fermeture de modal
+export function initModal() {
+  openModalButton.forEach((btn) => btn.addEventListener('click', launchModal));
+  closeModalButton.addEventListener('click', closeModal);
 }

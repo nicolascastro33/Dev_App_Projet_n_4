@@ -11,4 +11,3 @@ updateForm(validateUpdateForm);
 
 // Envoie et vérification du form
 submitForm(validateSubmitForm);
-
